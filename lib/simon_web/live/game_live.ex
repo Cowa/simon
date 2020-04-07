@@ -16,7 +16,10 @@ defmodule SimonWeb.GameLive do
   #   [module: RemyPlayer, name: "Rémy"]
   # ]
 
-  @player_configs []
+  @player_configs [
+    [module: Simon.BricePlayer, name: "Brice"],
+    [module: Simon.BricePlayer, name: "Angelo"]
+  ]
 
   def render(assigns) do
     GameView.render("index.html", assigns)
@@ -68,7 +71,7 @@ defmodule SimonWeb.GameLive do
 
   def handle_info({:current_player, {pid, player_name}}, socket) do
     current_player =
-      Enum.find(socket.assigns.players, fn {player_pid, _} -> player_pid == pid end)
+      Enum.find(socket.assigns.players, fn {player_pid, _, _} -> player_pid == pid end)
 
     {:noreply, assign(socket, current_player: current_player, message: "#{player_name}'s round")}
   end

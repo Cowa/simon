@@ -28,7 +28,7 @@ L'application est constituée de ces composants :
 L'IA de votre joueur doit être capable de jouer correctement une partie sur toute la longueur de la séquence.
 Votre serveur sera codée sous la forme d'un GenServer qui implémente les fonctions suivantes :
 
-* `start_link/1` 
+* `start_link/1`
   * Le tableau d'options suivantes lui sera passé `[game_server: game_server, name: name, perk: perk, guess_delay: guess_delay, round_delay: round_delay]`
     * `game_server` est le pid du process qui gère la partie
     * `name` est une string qui représente le nom donnée à votre joueur
@@ -37,11 +37,11 @@ Votre serveur sera codée sous la forme d'un GenServer qui implémente les fonct
 
   - Lorsque votre serveur est démarré, il doit d'abord rejoindre la partie en faisant un appel de type `cast` au `GameServer` avec le message suivant : `{:join, player_pid, player_name}`
 
-* Gérer les messages `handle_info/2` suivants 
+* Gérer les messages `handle_info/2` suivants
   * `{:sequence_color, round, color}`
     * Ce message est lancé plusieurs fois par le `GameServer` pour indiquer la séquence en cours (au tour 3, le `GameServer` va envoyer 3x ce message d'affilée pour chacune des couleurs; au début du tour 10 ce message sera lancé 10x)
     * `round` est le numéro du tour en cours
-    * `color` est un atom parmi `:red`, `:yellow`, `:green` et `:blue` 
+    * `color` est un atom parmi `:red`, `:yellow`, `:green` et `:blue`
 
   * `{:your_round, round}`
     * Ce message n'est adressé qu'au joueur qui a été choisi par le `GameServer` pour jouer le tour en cours.
@@ -77,7 +77,7 @@ Evidemment via la LiveView mais également avec `ExUnit`. Vous pouvez vous inspi
 
 Afin d'apporter un peu de sel aux parties, vos IA vont être dotées de facultées qui malheureusement feront toutes prendre fin à la partie de manièré prématurée.
 
-Votre IA doit supporter la fonction suivante : 
+Votre IA doit supporter la fonction suivante :
 
   - `supported_perks/0` qui retourne un tableau d'atoms de cette forme : `[:color_blind, :amnesic]`
   - au lancement de la partie, votre player sera aléatoirement doté d'un _perk_ parmi la liste supportée par votre IA via l'option `perk` passée à `start_link/1`
