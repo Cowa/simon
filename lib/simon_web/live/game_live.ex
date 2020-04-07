@@ -18,7 +18,7 @@ defmodule SimonWeb.GameLive do
 
   @player_configs [
     [module: Simon.BricePlayer, name: "Brice"],
-    [module: Simon.BricePlayer, name: "Angelo"]
+    [module: Simon.BricePlayer, name: "Matthieu"]
   ]
 
   def render(assigns) do

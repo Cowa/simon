@@ -71,7 +71,8 @@ Votre serveur sera codée sous la forme d'un GenServer qui implémente les fonct
 
 ## Tester votre IA
 
-Evidemment via la LiveView mais également avec `ExUnit`. Vous pouvez vous inspirer du test de `game_server_test.exs`.    
+Evidemment via la L
+iveView mais également avec `ExUnit`. Vous pouvez vous inspirer du test de `game_server_test.exs`.    
 
 ## Supporter des perks
 
